@@ -8,45 +8,56 @@
 </head>
 <body>
     <div class="main-content">
-        <div class="container">
-            <h1>Dot Format Changer</h1>
-            <p>Change the format of your files.</p>
+    <div class="container">
+        <h1>Dot Format Changer</h1>
+        <p>Change the format of your files.</p>
 
-            <!-- Hidden file input -->
-            <input type="file" id="fileInput" style="display: none;" onchange="handleFileChange(event)">
+        <!-- Hidden file input -->
+        <input type="file" id="fileInput" style="display: none;" onchange="handleFileChange(event)">
 
-            <!-- Custom upload button -->
-            <button class="upload-button" onclick="document.getElementById('fileInput').click()">
-                <svg id="UploadToCloud" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="16px" width="16px" class="icon">
-                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                    <path class="color000000 svgShape" fill="#000000" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l4.65-4.65c.2-.2.51-.2.71 0L17 13h-3z"></path>
-                </svg>
-                Upload
-            </button>
+        <!-- Custom upload button -->
+        <button class="upload-button" onclick="document.getElementById('fileInput').click()">
+            <svg
+                id="UploadToCloud"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                height="16px"
+                width="16px"
+                class="icon"
+            >
+                <path d="M0 0h24v24H0V0z" fill="none"></path>
+                <path
+                    class="color000000 svgShape"
+                    fill="#000000"
+                    d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l4.65-4.65c.2-.2.51-.2.71 0L17 13h-3z"
+                ></path>
+            </svg>
+            Upload
+        </button>
 
-            <p id="fileName">No file selected</p>
+        <p id="fileName">No file selected</p>
 
-            <!-- Dropdown for formats -->
-            <select id="formatSelect" class="format-select"></select>
+        <!-- Dropdown for formats -->
+        <select id="formatSelect" class="format-select"></select>
 
-            <!-- Custom extension input -->
-            <input type="text" id="customFormatInput" placeholder="Type your extension here" class="format-select" style="display: none;">
+        <!-- Custom extension input -->
+        <input type="text" id="customFormatInput" placeholder="Type your extension here" class="format-select" style="display: none;">
 
-            <button onclick="convertFile()" class="button">Convert and Download</button>
+        <button onclick="convertFile()" class="button">Convert and Download</button>
 
-            <!-- Confirmation for non-recommended conversion -->
-            <div id="confirmation" style="display:none;">
-                <p>The selected file type does not match the chosen formats. Do you want to proceed?</p>
-                <button onclick="confirmProceed(true)">Yes</button>
-                <button onclick="confirmProceed(false)">No</button>
-            </div>
-        </div>
-        <div class="iframe-container">
-            <div class="iframe-wrapper"></div>
-            <p><big><b>Preview Screen</b></big></p>
-            <iframe src="" frameborder="0" class="iframe"></iframe>
+        <!-- Confirmation for non-recommended conversion -->
+        <div id="confirmation" style="display:none;">
+            <p>The selected file type does not match the chosen formats. Do you want to proceed?</p>
+            <button onclick="confirmProceed(true)">Yes</button>
+            <button onclick="confirmProceed(false)">No</button>
         </div>
     </div>
+         <div class="iframe-container">
+        <div class="iframe-wrapper"></div><p><big><b>Preview Screen</b></big></p>
+        <iframe src="" frameborder="0" class="iframe"></iframe>
+        </div>
+</div>
+</div>
     <footer class="footer">
         <p>Developed by Sandeep Kasturi © all rights reserved 2024</p>
         <div class="social-icons">
@@ -57,16 +68,12 @@
             </a>
             <a href="https://github.com/sandeepkasturi" target="_blank" class="icon-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.72 7.72 0 0 1 8 4.93c.68.003 1.36.092 2 .27 1.52-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.011 8.011 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/sandeep-kasturi-392361218" target="_blank" class="icon-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path d="M0 1.146C0 .513.324 0 .722 0h14.556c.398 0 .722.513.722 1.146v13.708c0 .633-.324 1.146-.722 1.146H.722A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H3V13.394h1.943zm-.972-8.41c.69 0 1.254-.575 1.254-1.28C5.225 3.575 4.66 3 3.97 3c-.69 0-1.254.574-1.254 1.28 0 .705.564 1.28 1.254 1.28h.001zm4.98 8.41V9.359c0-.22.016-.438.08-.595.176-.438.576-.892 1.248-.892.88 0 1.232.674 1.232 1.664v3.858H13V9.25c0-2.02-1.076-2.96-2.51-2.96-1.16 0-1.674.637-1.959 1.093v.023h-.016a2.85 2.85 0 0 0-.016-.023V6.17H6.565c.026.68 0 7.223 0 7.223h1.943z"/>
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
                 </svg>
             </a>
         </div>
     </footer>
-    <script src="scripts.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
