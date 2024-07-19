@@ -28,7 +28,11 @@ function populateFormats() {
 
 function handleFileChange(event) {
     const file = event.target.files[0];
+    const iframe = document.querySelector('.iframe');
+
     if (file) {
+        const fileURL = URL.createObjectURL(file);
+        iframe.src = fileURL;
         document.getElementById('fileName').textContent = `Selected File: ${file.name}`;
         formatSelect.style.display = 'block';
         customFormatInput.style.display = 'block';
@@ -52,15 +56,67 @@ function convertFile() {
     // Simulate the conversion process
     setTimeout(() => {
         alert(`File converted to: ${newFileName}`);
-        downloadFile(newFileName);
+        downloadFile(file, newFileName, newExtension);
     }, 1000);
 }
 
-function downloadFile(fileName) {
+function downloadFile(file, newFileName, newExtension) {
+    // Create a blob URL for the converted file
+    const blob = new Blob([file], { type: getMimeType(newExtension) });
     const link = document.createElement('a');
-    link.href = '#'; // This would be replaced with the actual file URL
-    link.download = fileName;
+    link.href = URL.createObjectURL(blob);
+    link.download = newFileName;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
+}
+
+function getMimeType(extension) {
+    const mimeTypes = {
+        pdf: 'application/pdf',
+        doc: 'application/msword',
+        docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        txt: 'text/plain',
+        odt: 'application/vnd.oasis.opendocument.text',
+        rtf: 'application/rtf',
+        html: 'text/html',
+        md: 'text/markdown',
+        epub: 'application/epub+zip',
+        ppt: 'application/vnd.ms-powerpoint',
+        pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        jpg: 'image/jpeg',
+        jpeg: 'image/jpeg',
+        png: 'image/png',
+        gif: 'image/gif',
+        bmp: 'image/bmp',
+        tiff: 'image/tiff',
+        tif: 'image/tiff',
+        svg: 'image/svg+xml',
+        psd: 'image/vnd.adobe.photoshop',
+        ai: 'application/postscript',
+        ico: 'image/vnd.microsoft.icon',
+        mp3: 'audio/mpeg',
+        wav: 'audio/wav',
+        flac: 'audio/flac',
+        aac: 'audio/aac',
+        ogg: 'audio/ogg',
+        m4a: 'audio/mp4',
+        mp4: 'video/mp4',
+        avi: 'video/x-msvideo',
+        mkv: 'video/x-matroska',
+        mov: 'video/quicktime',
+        wmv: 'video/x-ms-wmv',
+        flv: 'video/x-flv',
+        zip: 'application/zip',
+        rar: 'application/x-rar-compressed',
+        '7z': 'application/x-7z-compressed',
+        tar: 'application/x-tar',
+        gz: 'application/gzip',
+        json: 'application/json',
+        xml: 'application/xml',
+        csv: 'text/csv'
+    };
+    return mimeTypes[extension.toLowerCase()] || 'application/octet-stream';
 }
 
 function confirmProceed(shouldProceed) {
@@ -74,15 +130,3 @@ function confirmProceed(shouldProceed) {
 
 // Initial population of formats
 populateFormats();
-function handleFileChange(event) {
-    const file = event.target.files[0];
-    const iframe = document.querySelector('.iframe');
-
-    if (file) {
-        const fileURL = URL.createObjectURL(file);
-        iframe.src = fileURL;
-        document.getElementById('fileName').textContent = `Selected File: ${file.name}`;
-        formatSelect.style.display = 'block';
-        customFormatInput.style.display = 'block';
-    }
-}
