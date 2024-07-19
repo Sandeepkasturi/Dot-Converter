@@ -51,6 +51,10 @@ function convertFile() {
     }
 
     const newExtension = customFormat ? customFormat : selectedFormat;
+    if (!newExtension) {
+        alert('Please select a format or enter a custom format.');
+        return;
+    }
     const newFileName = file.name.replace(/\.[^/.]+$/, "") + `_converted.${newExtension}`;
 
     // Simulate the conversion process
